@@ -1,0 +1,14 @@
+.dashboard {
+  background-color: yellow;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  .result {
+    background-color: purple;
+  }
+
+  .nomination {
+    background-color: blue;
+  }
+}

@@ -1,0 +1,11 @@
+.home {
+  background-color: green;
+  min-height: 90vh;
+  display: grid;
+  grid-template-rows: 100px 300px;
+
+  .search {
+    background-color: red;
+  }
+ 
+}
