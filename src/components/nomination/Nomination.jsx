@@ -10,6 +10,7 @@ class Nomination extends Component {
   };
 
   render() {
+    console.log(this.props.nominations);
     return (
       <div>
         {this.props.nominations.map((item) => {
