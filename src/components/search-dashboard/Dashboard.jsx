@@ -93,8 +93,14 @@ class Dashboard extends Component {
 
     this.state = {
       nominations: [],
-      disableBtn: true,
     };
+  }
+
+  componentDidMount() {
+    localStorage.getItem("Nomination") &&
+      this.setState({
+        nominations: JSON.parse(localStorage.getItem("Nomination")),
+      });
   }
 
   addItem = (item) => {
@@ -102,6 +108,11 @@ class Dashboard extends Component {
       nominations: [...this.state.nominations, item],
     });
   };
+
+  //  = (itemId) => {
+  //   items.push(itemId);
+  //   localStorage.setItem("items", JSON.stringify(items));
+  // };
 
   deleteItem = (itemId) => {
     const nominations = this.state.nominations.filter(
@@ -114,7 +125,7 @@ class Dashboard extends Component {
 
   render() {
     const { movies } = this.props;
-    const { nominations, disableBtn } = this.state;
+    const { nominations } = this.state;
     console.log(`Nomi ${nominations.length}`);
     if (nominations.length === 5) {
       console.log("It is okay");

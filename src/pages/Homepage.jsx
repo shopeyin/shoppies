@@ -13,6 +13,14 @@ class Homepage extends Component {
     };
   }
 
+  // componentWillMount() {
+  //   localStorage.setItem("nomin", "nom");
+  // }
+
+  // componentWillUpdate(nextProps, nextState) {
+  //   localStorage.setItem("nomin", "nom");
+  // }
+
   componentDidUpdate(prevProps, prevState) {
     if (prevState.searchField !== this.state.searchField) {
       fetch(

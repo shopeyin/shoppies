@@ -1,10 +1,12 @@
 import React, { Component } from "react";
+
+let items = [];
+
 class MovieSummary extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      mov: [],
       disabled: [],
     };
   }
@@ -13,16 +15,30 @@ class MovieSummary extends Component {
     this.props.addItem(item);
   };
 
+  componentDidMount() {
+    localStorage.getItem("disabled") &&
+      this.setState({
+        disabled: JSON.parse(localStorage.getItem("disabled")),
+      });
+  }
+
+  handleStorageDisable = (itemId) => {
+    items.push(itemId);
+    localStorage.setItem("disabled", JSON.stringify(items));
+  };
+
   handleDisabled = (imdbID) => {
+    let disabled = [...this.state.disabled, imdbID];
+
+    this.handleStorageDisable(imdbID);
     this.setState({
-      disabled: [...this.state.disabled, imdbID],
+      disabled,
     });
   };
 
   render() {
     const { Title, imdbID } = this.props.movie;
-    console.log(this.state.disabled);
-    console.log(this.props.movie);
+    console.log(`here oo ${this.state.disabled}`);
     return (
       <div>
         {" "}
