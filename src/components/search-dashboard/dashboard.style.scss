@@ -1,14 +1,11 @@
-.dashboard {
-  background-color: yellow;
-
+.row-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+}
 
-  .result {
-    background-color: purple;
-  }
-
-  .nomination {
-    background-color: blue;
+@media (max-width: 410px) {
+  .nomination-box {
+    display: flex;
+    justify-content: center;
   }
 }

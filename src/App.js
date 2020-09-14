@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import Homepage from "./pages/Homepage";
-import "./App.css";
+import "./App.scss";
 import { Route, Switch } from "react-router-dom";
 function App() {
   return (

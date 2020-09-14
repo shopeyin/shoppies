@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./movie.style.scss";
 
 let items = [];
 
@@ -37,27 +38,38 @@ class MovieSummary extends Component {
   };
 
   render() {
-    const { Title, imdbID } = this.props.movie;
-    console.log(`here oo ${this.state.disabled}`);
+    const { Title, imdbID, Poster, Year } = this.props.movie;
+
     return (
-      <div>
+      <div className="movie-container">
         {" "}
-        <h5>
-          {this.props.movie.Title}{" "}
+        <div
+          className="card mt-3"
+          style={{
+            backgroundImage: `url(${Poster})`,
+          }}
+        ></div>
+        <div className="mini-card">
+          <div className="title"> {this.props.movie.Title}</div>
+          <div className="year"> {this.props.movie.Year}</div>
+        </div>
+        <div className="button-container">
           <button
             key={imdbID}
+            className="btn btn-outline-warning mt-3"
             disabled={this.state.disabled.indexOf(imdbID) !== -1}
             onClick={() => {
               this.addingItem({
                 title: Title,
                 id: imdbID,
+                year: Year,
               });
               this.handleDisabled(imdbID);
             }}
           >
             Nominate
           </button>
-        </h5>
+        </div>
       </div>
     );
   }

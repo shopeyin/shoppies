@@ -13,14 +13,6 @@ class Homepage extends Component {
     };
   }
 
-  // componentWillMount() {
-  //   localStorage.setItem("nomin", "nom");
-  // }
-
-  // componentWillUpdate(nextProps, nextState) {
-  //   localStorage.setItem("nomin", "nom");
-  // }
-
   componentDidUpdate(prevProps, prevState) {
     if (prevState.searchField !== this.state.searchField) {
       fetch(
@@ -34,6 +26,10 @@ class Homepage extends Component {
     }
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   handleChange = (event) => {
     event.preventDefault();
     this.setState({ searchField: event.target.value });
@@ -42,16 +38,23 @@ class Homepage extends Component {
     const { movies } = this.state;
 
     return (
-      <div className="home">
-        <div className="search">
-          <SearchField
-            name="search"
-            placeholder="search movies"
-            handleChange={this.handleChange}
-          />
+      <div className="container-fluid b">
+        <div className="row search-container d-flex justify-content-center align-items-end">
+          <div className="col-md-8 ">
+            <form onSubmit={this.state.handleSubmit}>
+              <SearchField
+                name="Search"
+                placeholder="search movies"
+                handleChange={this.handleChange}
+              />
+            </form>
+          </div>
         </div>
-
-        <Dashboard movies={movies} />
+        <div className="row dashboard">
+          <div className="col-md-12 b">
+            <Dashboard movies={movies} />
+          </div>
+        </div>
       </div>
     );
   }

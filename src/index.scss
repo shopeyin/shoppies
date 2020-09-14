@@ -1,0 +1,70 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+// 1em = 16px
+// 400/16 = 25em
+
+@mixin respond($breakpoint) {
+  // 400px
+  @if $breakpoint == small-phone {
+    @media (max-width: 25em) {
+      @content;
+    }
+  }
+  @if $breakpoint == phone {
+    // 600px
+    @media (max-width: 37.5em) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab-port {
+    // 900px
+    @media (max-width: 56.25em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tab-grid {
+    // 1100px
+    @media (max-width: 68.75em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tab-landscape {
+    // 1200px
+    @media (max-width: 75em) {
+      @content;
+    }
+  }
+  @if $breakpoint ==big-desktop {
+    // 1800px
+    @media (min-width: 112.5em) {
+      @content;
+    }
+  }
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+
+ 
+}
+
+body {
+  font-family: sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  box-sizing: border-box;
+  font-size: 1.5rem;
+  padding: 2rem;
+
+ 
+}
+

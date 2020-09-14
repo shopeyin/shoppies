@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import "./search.style.scss";
 function SearchField({ placeholder, handleChange, name }) {
   return (
     <div>

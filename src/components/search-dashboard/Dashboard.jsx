@@ -109,11 +109,6 @@ class Dashboard extends Component {
     });
   };
 
-  //  = (itemId) => {
-  //   items.push(itemId);
-  //   localStorage.setItem("items", JSON.stringify(items));
-  // };
-
   deleteItem = (itemId) => {
     const nominations = this.state.nominations.filter(
       (item) => item.id !== itemId
@@ -126,28 +121,32 @@ class Dashboard extends Component {
   render() {
     const { movies } = this.props;
     const { nominations } = this.state;
-    console.log(`Nomi ${nominations.length}`);
-    if (nominations.length === 5) {
-      console.log("It is okay");
-    }
+
+    // if (nominations.length === 5) {
+    //   console.log("It is okay");
+    // }
 
     return (
-      <div className="dashboard">
-        <div className="result">
-          Search Result{" "}
-          {movies &&
-            movies.map((movie) => {
-              return (
-                <MovieSummary
-                  key={movie.imdbID}
-                  movie={movie}
-                  addItem={this.addItem}
-                />
-              );
-            })}
-        </div>
-        <div className="nomination">
-          <Nomination nominations={nominations} deleteItem={this.deleteItem} />
+      <div className="container">
+        <div className="row">
+          <div className="col-md-6 order-md-2 nomination-box">
+            <Nomination
+              nominations={nominations}
+              deleteItem={this.deleteItem}
+            />
+          </div>
+          <div className="col-md-6 order-md-1 row-container mb-4">
+            {movies &&
+              movies.map((movie) => {
+                return (
+                  <MovieSummary
+                    key={movie.imdbID}
+                    movie={movie}
+                    addItem={this.addItem}
+                  />
+                );
+              })}
+          </div>
         </div>
       </div>
     );
