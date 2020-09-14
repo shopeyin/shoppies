@@ -9,10 +9,6 @@ class Nomination extends Component {
     super(props);
   }
 
-  // getSnapshotBeforeUpdate = (prevProps, prevState) => {
-  //   localStorage.setItem("Nomination", JSON.stringify(this.props.nominations));
-  // };
-
   componentDidUpdate = (prevProps, nextProps) => {
     if (this.props.nominations !== prevProps.nominations) {
       localStorage.setItem(
@@ -25,10 +21,11 @@ class Nomination extends Component {
 
   removeItem = (itemId) => {
     this.props.deleteItem(itemId);
+    // window.location.reload(true);
   };
 
   notify = () => {
-    toast("basic");
+    toast("You have made 5 nominations already");
   };
 
   removeDisable = (itemId) => {
@@ -43,10 +40,9 @@ class Nomination extends Component {
 
   render() {
     console.log(this.props.nominations);
-    // if (this.props.nominations.length === 5) {
-    //   console.log("notificationnnnnnnn");
-    //   this.notify();
-    // }
+    if (this.props.nominations.length === 5) {
+      this.notify();
+    }
     const style = {
       display: "flex",
       justifyContent: "space-between",

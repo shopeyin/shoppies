@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "./movie.style.scss";
 
-let items = [];
-
 class MovieSummary extends Component {
   constructor(props) {
     super(props);
@@ -23,9 +21,18 @@ class MovieSummary extends Component {
       });
   }
 
+  // componentDidUpdate = (prevProps, prevState) => {
+  //   if (this.state.disabled !== prevState.disabled) {
+  //     localStorage.setItem("disabled", JSON.stringify(this.state.disabled));
+  //   }
+  //   return false;
+  // };
+
+  items = [];
+
   handleStorageDisable = (itemId) => {
-    items.push(itemId);
-    localStorage.setItem("disabled", JSON.stringify(items));
+    this.items.push(itemId);
+    localStorage.setItem("disabled", JSON.stringify(this.items));
   };
 
   handleDisabled = (imdbID) => {
@@ -39,7 +46,7 @@ class MovieSummary extends Component {
 
   render() {
     const { Title, imdbID, Poster, Year } = this.props.movie;
-
+    console.log(`Disable called ${this.state.disabled}`);
     return (
       <div className="movie-container">
         {" "}

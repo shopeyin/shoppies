@@ -121,7 +121,7 @@ class Dashboard extends Component {
   render() {
     const { movies } = this.props;
     const { nominations } = this.state;
-
+    console.log(`${movies} was called`);
     // if (nominations.length === 5) {
     //   console.log("It is okay");
     // }
